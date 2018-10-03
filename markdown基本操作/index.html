@@ -1,0 +1,65 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="it's so tasty blogs"><title>Markdown语法总结 | It's so tasty</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><article class="wrapper"><div class="post-main"><div class="nav"><nav class="container"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a></nav><div class="container post-meta"><div class="post-time">2018-10-03</div></div></div><div class="container post-header"><h1>Markdown语法总结</h1></div><div class="container post-content"><p>#Markdown语法总结<br>本文源自<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener">github-Markdown教程</a></p>
+<p>Markdown是一种轻量级且易于使用的语法，其实质上是一种在网络上设置文字样式的方法。形式为带 <code>.md</code> 或 <code>.markdown</code> 扩展名的文件</p>
+<p><strong>用途</strong>：控制文档的显示；将单词格式化为粗体或斜体；添加图像；创建列表  …</p>
+<h2 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h2><h3 id="编辑文本"><a href="#编辑文本" class="headerlink" title="编辑文本"></a>编辑文本</h3><p><strong>粗体</strong> <strong>也是粗体</strong>:  <code>**粗体**</code> <code>__也是粗体__</code><br><em>斜体</em> <em>还是斜体</em>: <code>*斜体*</code> <code>_还是斜体_</code><br><a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a>: <code>[百度](https://www.baidu.com)</code></p>
+<h3 id="编辑列表"><a href="#编辑列表" class="headerlink" title="编辑列表"></a>编辑列表</h3><ol>
+<li>内容一: <code>1. 内容一</code> </li>
+<li>内容二: <code>1. 内容二</code></li>
+<li>内容三: <code>1. 内容三</code><br>(<strong>注意</strong>：符号<code>1.</code>要与内容用<code></code>隔开)</li>
+</ol>
+<ul>
+<li>用字符<em>开头: `</em> 用字符*开头: `</li>
+<li>形成·列表: <code>* 形成·列表:</code><br>(<strong>注意</strong>：符号<code>*</code> <code>-</code>要与内容用<code></code>隔开)</li>
+</ul>
+<ul>
+<li>用字符-开头: <code>- 用字符*开头:</code></li>
+<li>与字符<em>作用相同: `- 与字符</em>作用相同:`<ul>
+<li>还可以形成二级列表</li>
+<li>Tab加-或者*<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 用字符-开头: `- 用字符*开头: `</span><br><span class="line">- 与字符*作用相同: `- 与字符*作用相同:`</span><br><span class="line">    - 还可以形成二级列表</span><br><span class="line">    - Tab加-或者*</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="嵌入图片"><a href="#嵌入图片" class="headerlink" title="嵌入图片"></a>嵌入图片</h3><p>如果要嵌入图像，请按以下步骤操作：<br><code>![百度logo](https://www.baidu.com/img/bd_logo1.png)</code><br><img src="https://www.baidu.com/img/bd_logo1.png" alt="百度logo"></p>
+<h3 id="结构化文档"><a href="#结构化文档" class="headerlink" title="结构化文档"></a>结构化文档</h3><p>用#来构建6个级别目录:</p>
+<h1 id="一级目录"><a href="#一级目录" class="headerlink" title="一级目录"></a>一级目录</h1><h2 id="二级目录"><a href="#二级目录" class="headerlink" title="二级目录"></a>二级目录</h2><h3 id="三级目录"><a href="#三级目录" class="headerlink" title="三级目录"></a>三级目录</h3><h4 id="四级目录"><a href="#四级目录" class="headerlink" title="四级目录"></a>四级目录</h4><h5 id="五级目录"><a href="#五级目录" class="headerlink" title="五级目录"></a>五级目录</h5><h6 id="六级目录"><a href="#六级目录" class="headerlink" title="六级目录"></a>六级目录</h6><p>####### 没有七级目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 一级目录</span><br><span class="line">## 二级目录</span><br><span class="line">### 三级目录</span><br><span class="line">#### 四级目录</span><br><span class="line">##### 五级目录</span><br><span class="line">###### 六级目录</span><br><span class="line">####### 没有七级目录</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>引用文字<br>仍然引用</p>
+</blockquote>
+<p>(<strong>注意</strong>：用空行隔开结束引用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用文字</span><br><span class="line">仍然引用</span><br><span class="line"></span><br><span class="line">(**注意**：用空行隔开结束引用)</span><br></pre></td></tr></table></figure></p>
+<h3 id="写入代码"><a href="#写入代码" class="headerlink" title="写入代码"></a>写入代码</h3><p>如果你有内联代码块，请用反引号包装它们：`var example = true`: <code>var example = true</code><br>```代码块``` 用于多行代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output = <span class="string">'hello world'</span></span><br><span class="line">print(output)</span><br></pre></td></tr></table></figure></p>
+<p>```python<br>output = ‘hello world’<br>print(output)<br>```<br>(<strong>注意</strong>:标明语言类型可在代码块中将语言标为高亮)</p>
+<h3 id="添加表格"><a href="#添加表格" class="headerlink" title="添加表格"></a>添加表格</h3><table>
+<thead>
+<tr>
+<th>性别</th>
+<th>男</th>
+<th>女</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数量</td>
+<td>20</td>
+<td>18</td>
+</tr>
+<tr>
+<td>体重</td>
+<td>60</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>生成表格:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">性别|男 | 女</span><br><span class="line">-|-|-</span><br><span class="line">数量|20|18</span><br><span class="line">体重|60|50</span><br><span class="line">生成表格:</span><br></pre></td></tr></table></figure></p>
+<p>|分割列-分割表头</p>
+<h3 id="附加功能"><a href="#附加功能" class="headerlink" title="附加功能"></a>附加功能</h3><p>GitHub支持Markdown中的许多附加功能，可以帮助您引用和链接到人。如果你想向某人发表评论，你可以在他们的名字前加上@符号：@用户名(未验证)<br>任务列表<code>- [x]</code> 与 <code>- [ ]</code></p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 这是一个完整的项目</li>
+<li style="list-style: none"><input type="checkbox"> 这是一个不完整的项目</li>
+</ul>
+<p>当您在问题的第一条评论中包含任务列表时，您会在问题列表中看到一个有用的进度条.</p>
+<p>表情符号: :sparkles: :camel: :boom:<br><code>:sparkles:</code> <code>:camel:</code> <code>:boom:</code></p>
+</div></div><div class="post-main post-comment"></div></article><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+  $(".fancybox").fancybox();
+});
+</script></body></html>
