@@ -1,4 +1,1603 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="it's so tasty blogs"><title>It's so tasty | it's so tasty blogs</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/font.css"><link rel="stylesheet" type="text/css" href="/css/noise.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><header class="wrapper header"><div class="container blog-title"><a class="title" id="logo" href="/.">It's so tasty</a><span class="subtitle">it's so tasty blogs</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div><input id="menu" type="checkbox"><div class="container nav-items"><a class="sidebar-nav-item active" href="/">Home</a><a class="sidebar-nav-item" href="/archives">Archives</a></div></header><article class="wrapper"><div class="container entries" id="index-main"><div class="post-entry"><div class="post-desc"><div class="post-title"><a href="/socket用法/">网络编程中的Socket</a></div><div class="post-content"><p>本文源自<a href="https://baike.baidu.com/item/socket/281150?fr=aladdin" target="_blank" rel="noopener">百度百科</a>和<a href="https://docs.python.org/3.7/library/socket.html" target="_blank" rel="noopener">Python官方文档</a></p></div><div class="post-meta"><div class="post-time">2018-10-25</div></div></div></div><div class="post-entry"><div class="post-desc"><div class="post-title"><a href="/markdown基本操作/">Markdown语法总结</a></div><div class="post-content"><p>本文源自<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener">github-Markdown教程</a></p></div><div class="post-meta"><div class="post-time">2018-10-03</div></div></div></div><div class="post-entry"><div class="post-desc"><div class="post-title"><a href="/snipaste安装/"></a></div><div class="post-content"></div><div class="post-meta"><div class="post-time">2018-10-03</div></div></div></div><div class="post-entry"><div class="post-desc"><div class="post-title"><a href="/hello-Hexo/">Hello Hexo</a></div><div class="post-content"><p>Hello Hexo!<br>This’s my first time using Hexo.<br>It’s a test blog for Front-matter.</p></div><div class="post-meta"><div class="post-tags"><a class="post-tag-link" href="/tags/Games/">Games</a><a class="post-tag-link" href="/tags/PS3/">PS3</a></div><div class="post-time">2018-10-02</div></div></div></div><div class="post-entry"><div class="post-desc"><div class="post-title"><a href="/hello-world/">Hello World</a></div><div class="post-content"><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p></div><div class="post-meta"><div class="post-time">2018-10-02</div></div></div></div></div></article><div class="wrapper page-navigator-wrapper"></div><footer class="footer wrapper"><div class="social"><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer-content">© 2018 <a href="/" rel="nofollow">It's so tasty</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/hexo-theme-noise">noise</a>.</div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
-  $(".fancybox").fancybox();
-});
-</script></body></html>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="it&apos;s so tasty blogs">
+<meta property="og:type" content="website">
+<meta property="og:title" content="It&#39;s so tasty">
+<meta property="og:url" content="https://814317935.github.io/index.html">
+<meta property="og:site_name" content="It&#39;s so tasty">
+<meta property="og:description" content="it&apos;s so tasty blogs">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="It&#39;s so tasty">
+<meta name="twitter:description" content="it&apos;s so tasty blogs">
+
+
+
+
+
+
+  <link rel="canonical" href="https://814317935.github.io/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>It's so tasty</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">It's so tasty</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">it's so tasty blogs</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://814317935.github.io/socket用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tasty">
+      <meta itemprop="description" content="it's so tasty blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="It's so tasty">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/socket用法/" itemprop="url">
+                  网络编程中的Socket
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-10-25 09:32:29" itemprop="dateCreated datePublished" datetime="2018-10-25T09:32:29+08:00">2018-10-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-10-26 17:59:36" itemprop="dateModified" datetime="2018-10-26T17:59:36+08:00">2018-10-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文源自<a href="https://baike.baidu.com/item/socket/281150?fr=aladdin" target="_blank" rel="noopener">百度百科</a>和<a href="https://docs.python.org/3.7/library/socket.html" target="_blank" rel="noopener">Python官方文档</a></p>
+<h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><p>&emsp;&emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。<br>&lt; !–more–&gt;<br>&emsp;&emsp;socket起源于Unix, 而Unix/Linux基本哲学之一就是“一切皆文件”, 对于文件用【打开】【读写】【关闭】模式来操作。所以, 本质上来说, socket就是该模式的一个实现, socket即是一种特殊的文件, 一些socket函数就是对其进行的操作（读/写IO、打开、关闭）。<br>&emsp;&emsp;不同于file针对某个指定<strong>文件</strong>进行【打开】【读写】【关闭】, socket模块针对的是<strong>服务器端</strong> 和<strong>客户端</strong>socket进行【打开】【读写】【关闭】。</p>
+<h2 id="Python中的socket类"><a href="#Python中的socket类" class="headerlink" title="Python中的socket类"></a>Python中的socket类</h2><p>&emsp;&emsp;python中带有socket库, 用于生成socket进行客户端与服务器间的数据传输：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">mysk = socket.socket()</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;导入模块socket, 并创建socket类。关于socket类, 查看socket库源码socket类的构造器函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">socket</span><span class="params">(_socket.socket)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, family=AF_INET, type=SOCK_STREAM, proto=<span class="number">0</span>, fileno=None)</span>:</span></span><br><span class="line">        _socket.socket.__init__(self, family, type, proto, fileno)</span><br><span class="line">        self._io_refs = <span class="number">0</span></span><br><span class="line">        self._closed = <span class="keyword">False</span></span><br></pre></td></tr></table></figure></p>
+<p><code>family</code>指定协议族, <code>type</code>指定协议类型, <code>proto</code>指定协议编号(默认为0),<code>fileno</code>指定文件描述符。</p>
+<table>
+<thead>
+<tr>
+<th>协议族</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>socket.AF_UNIX</code></td>
+<td>只能够用于单一的Unix系统进程间通信</td>
+</tr>
+<tr>
+<td><code>socket.AF_INET</code></td>
+<td>服务器之间网络通信, IPv4(默认)</td>
+</tr>
+<tr>
+<td><code>socket.AF_INET6</code></td>
+<td>IPv6</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Socket类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>socket.SOCK_STREAM</code></td>
+<td>数据流类型socket, 实现TCP协议(默认)</td>
+</tr>
+<tr>
+<td><code>socket.SOCK_DGRAM</code></td>
+<td>数据包类型socket, 实现UDP协议</td>
+</tr>
+<tr>
+<td><code>socket.SOCK_RAW</code></td>
+<td>原始socket, 普通的socket无法处理ICMP, IGMP等网络报文, 而<code>SOCK_RAW</code>可以; 其次, <code>SOCK_RAW</code>也可以处理特殊的IPv4报文; 此外, 利用原始socket, 可以通过IP_HDRINCL socket选项由用户构造IP头。</td>
+</tr>
+<tr>
+<td><code>socket.SOCK_SEQPACKET</code></td>
+<td>可靠的连续数据包服务</td>
+</tr>
+</tbody>
+</table>
+<h2 id="开放系统互联参考模型"><a href="#开放系统互联参考模型" class="headerlink" title="开放系统互联参考模型"></a>开放系统互联参考模型</h2><p>OSI是Open System Interconnection 的缩写, 意为开放式系统互联参考模型<br><img src="/socket用法/OSI模型.jpg" alt="OSI七层模型"><br>&emsp;&emsp;socket位于接口处, 即应用层与传输层之间<br><img src="/socket用法/OSI+socket模型.jpg" alt="socket的作用"><br>&emsp;&emsp;socket建立TCP连接<br><img src="/socket用法/TCPsocket.jpg" alt="TCPsocket"><br>&emsp;&emsp;需要注意的是, 对于<strong>客户端</strong>来说, 数据的读写、连接直接是对客户端建立的socket进行操作; 而<strong>服务器端</strong>建立的socket是负责监听及接收客户端连接的, 对于数据的读写操作, 则是通过服务器端socket通过客户端连接所接收到的<strong>新的socket</strong>(与每一个客户端的socket对应)完成的。</p>
+<h2 id="Socket对象的方法"><a href="#Socket对象的方法" class="headerlink" title="Socket对象的方法"></a>Socket对象的方法</h2><p>生成socket对象<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">s = socket.socket()</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>&lt;socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0&gt;</p>
+</blockquote>
+<p>可以看出默认生成的socket对象中, <code>family</code>为<code>AF_INET</code>(IPv4), <code>type</code>为<code>SOCK_STREAM</code>(TCP), <code>proto</code>为0。</p>
+<h3 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s.bind(address)</code></td>
+<td>将socket绑定到地址, 在AF_INET下, 以元组<code>(host, port)</code>的形式表示地址</td>
+</tr>
+<tr>
+<td><code>s.listen(backlog)</code></td>
+<td>开始监听传入连接。backlog指定在拒绝连接之前, 操作系统可以挂起的最大连接数量(最小为1)</td>
+</tr>
+<tr>
+<td><code>s.accpet()</code></td>
+<td>接收连接并返回<code>(conn, address)</code>。其中<code>conn</code>是新的socket对象(匹配客户端), 可以用来接受和发送数据。<code>address</code>是连接客户端的地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s.connect(address)</code></td>
+<td>连接到<code>address</code>处的socket。一般<code>address</code>的格式为元组<code>(hostname, port)</code>, 如果连接出错, 返回<code>socket.error</code>错误</td>
+</tr>
+<tr>
+<td><code>s.connect_ex(address)</code></td>
+<td>功能与<code>connect(address)</code>相同。但是连接成功返回<strong>0</strong>, 失败返回<strong>error的值</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="公用"><a href="#公用" class="headerlink" title="公用"></a>公用</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s.fileno()</code></td>
+<td>返回socket的文件描述符(一个整数),失败时返回-1</td>
+</tr>
+<tr>
+<td><code>s.dup()</code></td>
+<td>复制并创建新的套接字</td>
+</tr>
+<tr>
+<td><code>s.set_inheritable(inheritable)</code></td>
+<td>设置套接字文件描述符或套接字句柄的可继承标志</td>
+</tr>
+<tr>
+<td><code>s.get_inheritable()</code></td>
+<td>获取套接字文件描述符或套接字句柄的可继承标志：<code>True</code>表示套接字可以在子进程中继承, <code>False</code>则不能</td>
+</tr>
+<tr>
+<td><code>s.getpeername()</code></td>
+<td>返回socket所连接的远程地址元组<code>(address, port)</code></td>
+</tr>
+<tr>
+<td><code>s.getsockname()</code></td>
+<td>返回socket自己的地址元组<code>(address, port)</code></td>
+</tr>
+<tr>
+<td><code>s.setsockopt(level, optname, value : int)</code></td>
+<td>设置给定socket选项的值</td>
+</tr>
+<tr>
+<td><code>s.makefile(mode = &#39;r&#39;, buffering = None, *, encoding = None, errors = None, newline = None)</code></td>
+<td>返回与socket关联的文件对象。套接字必须处于阻塞模式; 它可能有超时，但如果发生超时，文件对象的内部缓冲区可能会以不一致的状态结束</td>
+</tr>
+<tr>
+<td><code>s.recv(bufsize[,flags])</code></td>
+<td>从socket接收数据。返回值为接收数据的字符串。一次接收的最大数据量由<code>bufsize</code>指定。<code>flags</code>默认为0</td>
+</tr>
+<tr>
+<td><code>s.recv_into(bufsize[, nbytes[, flags]])</code></td>
+<td>从socket接收最多<code>nbytes</code>字节, 将数据存储到缓冲区而不是创建新字符串。如果未指定<code>nbytes</code>（或为0）, 则接收最大为给定缓冲区中可用大小的数据。返回接收的字节数</td>
+</tr>
+<tr>
+<td><code>s.recvfrom(bufsize[, flags])</code></td>
+<td>从socket接收数据。返回值是一个元组<code>(string, address)</code>, 其中<code>string</code>是表示接收数据的字符串, <code>address</code>是发送数据的socket的地址。</td>
+</tr>
+<tr>
+<td><code>s.recvfrom_into(bufsize[, nbytes[, flags]])</code></td>
+<td>从socket接收数据, 将其写入缓冲区而不是创建新字符串。返回值是一个元组<code>(nbytes, address)</code>, 其中<code>nbytes</code>是接收的字节数, <code>address</code>是发送数据的socket的地址</td>
+</tr>
+<tr>
+<td><code>s.recvmsg(bufsize[, ancbufsize[, flags]])</code></td>
+<td>从套接字接收正常数据（最多<code>bufsize</code>字节）和辅助数据。所述<code>ancbufsize</code>参数设置在用于接收的辅助数据的内部缓冲区的字节大小; 它默认为0, 表示不会收到任何辅助数据, 此时用法与<code>recv()</code>相同</td>
+</tr>
+<tr>
+<td><code>s.recvmsg_into(buffers[, ancbufsize[, flags]])</code></td>
+<td>从套接字接收正常数据和辅助数据, 但将非辅助数据分散到一系列缓冲区而不是返回新的字节对象</td>
+</tr>
+<tr>
+<td><code>s.getsockopt(level, optname[, buflen])</code></td>
+<td>返回给定socket选项的值</td>
+</tr>
+<tr>
+<td><code>s.sendall(string[, flags])</code></td>
+<td>将数据发送到socket。socket必须连接到远程socket。与<code>send()</code>不同, 如未发送完, 此方法继续从字符串发送数据, 直到所有数据都已发送或发生错误。 返回<code>None</code>表示发送成功。出错时, 会引发异常, 但无法确定成功发送了多少数据</td>
+</tr>
+<tr>
+<td><code>s.sendto(string[, flags], address)</code></td>
+<td>将数据发送到指定socket。因为目标socket由地址指定, socket不能连接到远程socket。返回发送的字节数</td>
+</tr>
+<tr>
+<td><code>s.send(string[, flags])</code></td>
+<td>将数据发送到socket。socket必须连接到远程socket。可选的flags参数与recv()上面的含义相同。返回发送的字节数(不一定全部发送)</td>
+</tr>
+<tr>
+<td><code>s.sendmsg(buffers[, ancdata[, flags[, address]]])</code></td>
+<td>将正常和辅助数据发送到套接字, 从一系列缓冲区收集非辅助数据并将其连接成单个消息</td>
+</tr>
+<tr>
+<td><code>s.sendfile(file, offset=0, count=None)</code></td>
+<td>通过使用高性能发送文件<code>os.sendfile</code>直到达到<code>EOF</code>。并返回已发送的总字节数<code>file</code>必须是以二进制模式打开的常规文件对象。如果<code>os.sendfile</code>不可用（例如Windows）或文件不是常规文件,将执行<code>send()</code>。<code>offset</code>开始读取文件的位置。<code>count</code>是要发送的总字节数, 如未指定则发送文件直到达到<code>EOF</code>。文件位置在返回时或出现错误的情况下更新, 出错时通过<code>file.tell()</code>来计算发送的字节数。套接字必须是<code>SOCK_STREAM</code>类型。不支持非阻塞套接字</td>
+</tr>
+<tr>
+<td><code>s.setblocking(flag)</code></td>
+<td>如果<code>flag</code>为0, 则将socket设置为非阻塞模式。否则, socket将设置为阻塞模式（默认值）。在非阻塞模式下, 如果<code>recv()</code>调用没有发现任何数据或者<code>send()</code>调用无法立即发送数据, 那么将引发<code>socket.error</code>异常。在阻塞模式下, 这些调用在处理之前都将被阻塞</td>
+</tr>
+<tr>
+<td><code>socket.getblocking()</code></td>
+<td>True表示套接字处于阻塞模式, False则处于非阻塞状态</td>
+</tr>
+<tr>
+<td><code>s.settimeout(value)</code></td>
+<td>为阻塞socket操作设置超时限制。所述值参数可以是表达秒的非负浮点数(或者<code>None</code>)。如果操作超时, 则后续的socket操作将引发异常。<code>None</code>为无时限阻塞。<code>s.settimeout(0.0)</code>相当于<code>s.setblocking(0)</code>;<code>s.settimeout(None)</code>相当于<code>s.setblocking(1)</code></td>
+</tr>
+<tr>
+<td><code>s.gettimeout()</code></td>
+<td>返回与socket操作关联的超时(秒)(浮点数), <code>None</code>表示为设置超时</td>
+</tr>
+<tr>
+<td><code>s.shutdown(how)</code></td>
+<td>单方向关闭socket读写功能(立即关闭)。<code>how</code>的参数为<code>SHUT_RD</code>,关闭数据读取; <code>SHUT_WR</code>,关闭数据写入; <code>SHUT_RDWR</code>,关闭数据读取和写入。<code>shutdown()</code>的效果是累计的, 不可逆转的。既如果关闭了一个方向数据传输, 那么这个方向将会被关闭直至完全被关闭或删除, 而不能重新被打开</td>
+</tr>
+<tr>
+<td><code>s.close()</code></td>
+<td>关闭socket, 释放与连接关联的内存(非立即关闭)</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;&emsp;本文只介绍了socket对象的一些列方法(非所有方法), 未记录socket总类中的其他方法, 有时间继续完善, 亦可直接查看<a href="https://docs.python.org/3.7/library/socket.html" target="_blank" rel="noopener">Python官方文档</a>。<br>&emsp;&emsp;待续……</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://814317935.github.io/markdown基本操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tasty">
+      <meta itemprop="description" content="it's so tasty blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="It's so tasty">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/markdown基本操作/" itemprop="url">
+                  Markdown语法总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-10-03 13:02:10" itemprop="dateCreated datePublished" datetime="2018-10-03T13:02:10+08:00">2018-10-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-10-26 17:59:36" itemprop="dateModified" datetime="2018-10-26T17:59:36+08:00">2018-10-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文源自<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" rel="noopener">github-Markdown教程</a></p>
+<p>Markdown是一种轻量级且易于使用的语法，其实质上是一种在网络上设置文字样式的方法。形式为带 <code>.md</code> 或 <code>.markdown</code> 扩展名的文件<br>&lt; !–more–&gt;<br><strong>用途</strong>：控制文档的显示；将单词格式化为粗体或斜体；添加图像；创建列表  …</p>
+<h2 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h2><h3 id="编辑文本"><a href="#编辑文本" class="headerlink" title="编辑文本"></a>编辑文本</h3><p><strong>粗体</strong> <strong>也是粗体</strong>:  <code>**粗体**</code> <code>__也是粗体__</code><br><em>斜体</em> <em>还是斜体</em>: <code>*斜体*</code> <code>_还是斜体_</code><br><a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a>: <code>[百度](https://www.baidu.com)</code></p>
+<h3 id="编辑列表"><a href="#编辑列表" class="headerlink" title="编辑列表"></a>编辑列表</h3><ol>
+<li>内容一: <code>1. 内容一</code> </li>
+<li>内容二: <code>1. 内容二</code></li>
+<li>内容三: <code>1. 内容三</code><br>(<strong>注意</strong>：符号<code>1.</code>要与内容用<code></code>隔开)</li>
+</ol>
+<ul>
+<li>用字符<em>开头: `</em> 用字符*开头: `</li>
+<li>形成·列表: <code>* 形成·列表:</code><br>(<strong>注意</strong>：符号<code>*</code> <code>-</code>要与内容用<code></code>隔开)</li>
+</ul>
+<ul>
+<li>用字符-开头: <code>- 用字符*开头:</code></li>
+<li>与字符<em>作用相同: `- 与字符</em>作用相同:`<ul>
+<li>还可以形成二级列表</li>
+<li>Tab加-或者*<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 用字符-开头: `- 用字符*开头: `</span><br><span class="line">- 与字符*作用相同: `- 与字符*作用相同:`</span><br><span class="line">    - 还可以形成二级列表</span><br><span class="line">    - Tab加-或者*</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="嵌入图片"><a href="#嵌入图片" class="headerlink" title="嵌入图片"></a>嵌入图片</h3><p>如果要嵌入图像，请按以下步骤操作：<br><code>![百度logo](https://www.baidu.com/img/bd_logo1.png)</code><br><img src="https://www.baidu.com/img/bd_logo1.png" alt="百度logo"></p>
+<h3 id="结构化文档"><a href="#结构化文档" class="headerlink" title="结构化文档"></a>结构化文档</h3><p>用#来构建6个级别目录:</p>
+<h1 id="一级目录"><a href="#一级目录" class="headerlink" title="一级目录"></a>一级目录</h1><h2 id="二级目录"><a href="#二级目录" class="headerlink" title="二级目录"></a>二级目录</h2><h3 id="三级目录"><a href="#三级目录" class="headerlink" title="三级目录"></a>三级目录</h3><h4 id="四级目录"><a href="#四级目录" class="headerlink" title="四级目录"></a>四级目录</h4><h5 id="五级目录"><a href="#五级目录" class="headerlink" title="五级目录"></a>五级目录</h5><h6 id="六级目录"><a href="#六级目录" class="headerlink" title="六级目录"></a>六级目录</h6><p>####### 没有七级目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 一级目录</span><br><span class="line">## 二级目录</span><br><span class="line">### 三级目录</span><br><span class="line">#### 四级目录</span><br><span class="line">##### 五级目录</span><br><span class="line">###### 六级目录</span><br><span class="line">####### 没有七级目录</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>引用文字<br>仍然引用</p>
+</blockquote>
+<p>(<strong>注意</strong>：用空行隔开结束引用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用文字</span><br><span class="line">仍然引用</span><br><span class="line"></span><br><span class="line">(**注意**：用空行隔开结束引用)</span><br></pre></td></tr></table></figure></p>
+<h3 id="写入代码"><a href="#写入代码" class="headerlink" title="写入代码"></a>写入代码</h3><p>如果你有内联代码块，请用反引号包装它们：`var example = true`: <code>var example = true</code><br>```代码块``` 用于多行代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output = <span class="string">'hello world'</span></span><br><span class="line">print(output)</span><br></pre></td></tr></table></figure></p>
+<p>```python<br>output = ‘hello world’<br>print(output)<br>```<br>(<strong>注意</strong>:标明语言类型可在代码块中将语言标为高亮)</p>
+<h3 id="添加表格"><a href="#添加表格" class="headerlink" title="添加表格"></a>添加表格</h3><table>
+<thead>
+<tr>
+<th>性别</th>
+<th>男</th>
+<th>女</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数量</td>
+<td>20</td>
+<td>18</td>
+</tr>
+<tr>
+<td>体重</td>
+<td>60</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p>生成表格:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">性别|男 | 女</span><br><span class="line">-|-|-</span><br><span class="line">数量|20|18</span><br><span class="line">体重|60|50</span><br><span class="line">生成表格:</span><br></pre></td></tr></table></figure></p>
+<p>|分割列-分割表头</p>
+<h3 id="附加功能"><a href="#附加功能" class="headerlink" title="附加功能"></a>附加功能</h3><p>GitHub支持Markdown中的许多附加功能，可以帮助您引用和链接到人。如果你想向某人发表评论，你可以在他们的名字前加上@符号：@用户名(未验证)<br>任务列表<code>- [x]</code> 与 <code>- [ ]</code></p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 这是一个完整的项目</li>
+<li style="list-style: none"><input type="checkbox"> 这是一个不完整的项目</li>
+</ul>
+<p>当您在问题的第一条评论中包含任务列表时，您会在问题列表中看到一个有用的进度条.</p>
+<p>表情符号: :sparkles: :camel: :boom:<br><code>:sparkles:</code> <code>:camel:</code> <code>:boom:</code></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://814317935.github.io/snipaste安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tasty">
+      <meta itemprop="description" content="it's so tasty blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="It's so tasty">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/snipaste安装/" itemprop="url">
+                  Unbenannt
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-10-03 11:49:43 / Updated at: 13:01:42" itemprop="dateCreated datePublished" datetime="2018-10-03T11:49:43+08:00">2018-10-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://814317935.github.io/hello-Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tasty">
+      <meta itemprop="description" content="it's so tasty blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="It's so tasty">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hello-Hexo/" itemprop="url">
+                  Hello Hexo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-10-02 13:30:00" itemprop="dateCreated datePublished" datetime="2018-10-02T13:30:00+08:00">2018-10-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-10-26 17:59:15" itemprop="dateModified" datetime="2018-10-26T17:59:15+08:00">2018-10-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Diary/" itemprop="url" rel="index"><span itemprop="name">Diary</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Hello Hexo!<br>&lt; !–more–&gt;<br>This’s my first time using Hexo.<br>It’s a test blog for Front-matter.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://814317935.github.io/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tasty">
+      <meta itemprop="description" content="it's so tasty blogs">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="It's so tasty">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-10-02 09:30:59" itemprop="dateCreated datePublished" datetime="2018-10-02T09:30:59+08:00">2018-10-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-10-26 17:59:36" itemprop="dateModified" datetime="2018-10-26T17:59:36+08:00">2018-10-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>&lt; !–more–&gt; </p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tasty</p>
+              <p class="site-description motion-element" itemprop="description">it's so tasty blogs</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">Tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tasty</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
