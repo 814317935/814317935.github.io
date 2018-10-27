@@ -108,20 +108,20 @@
 
 
 
-  <meta name="description" content="本文源自百度百科和Python官方文档 Socket&amp;emsp;&amp;emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。&amp;lt; !–more–&amp;gt;&amp;emsp;&amp;emsp;socket起源于Unix, 而Unix/Linux基本哲学之一就是“一切皆文件”, 对于文件用【打开】【读写】【关闭】模式">
+  <meta name="description" content="本文源自百度百科和Python官方文档 Socket&amp;emsp;&amp;emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络编程中的Socket">
 <meta property="og:url" content="https://814317935.github.io/socket用法/index.html">
 <meta property="og:site_name" content="It&#39;s so tasty">
-<meta property="og:description" content="本文源自百度百科和Python官方文档 Socket&amp;emsp;&amp;emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。&amp;lt; !–more–&amp;gt;&amp;emsp;&amp;emsp;socket起源于Unix, 而Unix/Linux基本哲学之一就是“一切皆文件”, 对于文件用【打开】【读写】【关闭】模式">
+<meta property="og:description" content="本文源自百度百科和Python官方文档 Socket&amp;emsp;&amp;emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://814317935.github.io/socket用法/OSI模型.jpg">
 <meta property="og:image" content="https://814317935.github.io/socket用法/OSI+socket模型.jpg">
 <meta property="og:image" content="https://814317935.github.io/socket用法/TCPsocket.jpg">
-<meta property="og:updated_time" content="2018-10-26T09:59:36.663Z">
+<meta property="og:updated_time" content="2018-10-26T10:01:10.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络编程中的Socket">
-<meta name="twitter:description" content="本文源自百度百科和Python官方文档 Socket&amp;emsp;&amp;emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。&amp;lt; !–more–&amp;gt;&amp;emsp;&amp;emsp;socket起源于Unix, 而Unix/Linux基本哲学之一就是“一切皆文件”, 对于文件用【打开】【读写】【关闭】模式">
+<meta name="twitter:description" content="本文源自百度百科和Python官方文档 Socket&amp;emsp;&amp;emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。">
 <meta name="twitter:image" content="https://814317935.github.io/socket用法/OSI模型.jpg">
 
 
@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-10-26 17:59:36" itemprop="dateModified" datetime="2018-10-26T17:59:36+08:00">2018-10-26</time>
+                <time title="Updated at: 2018-10-26 18:01:10" itemprop="dateModified" datetime="2018-10-26T18:01:10+08:00">2018-10-26</time>
               
             
           </span>
@@ -383,7 +383,7 @@
 
       
         <p>本文源自<a href="https://baike.baidu.com/item/socket/281150?fr=aladdin" target="_blank" rel="noopener">百度百科</a>和<a href="https://docs.python.org/3.7/library/socket.html" target="_blank" rel="noopener">Python官方文档</a></p>
-<h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><p>&emsp;&emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。<br>&lt; !–more–&gt;<br>&emsp;&emsp;socket起源于Unix, 而Unix/Linux基本哲学之一就是“一切皆文件”, 对于文件用【打开】【读写】【关闭】模式来操作。所以, 本质上来说, socket就是该模式的一个实现, socket即是一种特殊的文件, 一些socket函数就是对其进行的操作（读/写IO、打开、关闭）。<br>&emsp;&emsp;不同于file针对某个指定<strong>文件</strong>进行【打开】【读写】【关闭】, socket模块针对的是<strong>服务器端</strong> 和<strong>客户端</strong>socket进行【打开】【读写】【关闭】。</p>
+<h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><p>&emsp;&emsp;所谓socket通常也称作”套接字”, 用于描述IP地址和端口, 是一个通信链的句柄。应用程序通常通过”套接字”向网络发出请求或者应答网络请求。<br><a id="more"></a><br>&emsp;&emsp;socket起源于Unix, 而Unix/Linux基本哲学之一就是“一切皆文件”, 对于文件用【打开】【读写】【关闭】模式来操作。所以, 本质上来说, socket就是该模式的一个实现, socket即是一种特殊的文件, 一些socket函数就是对其进行的操作（读/写IO、打开、关闭）。<br>&emsp;&emsp;不同于file针对某个指定<strong>文件</strong>进行【打开】【读写】【关闭】, socket模块针对的是<strong>服务器端</strong> 和<strong>客户端</strong>socket进行【打开】【读写】【关闭】。</p>
 <h2 id="Python中的socket类"><a href="#Python中的socket类" class="headerlink" title="Python中的socket类"></a>Python中的socket类</h2><p>&emsp;&emsp;python中带有socket库, 用于生成socket进行客户端与服务器间的数据传输：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">mysk = socket.socket()</span><br></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;导入模块socket, 并创建socket类。关于socket类, 查看socket库源码socket类的构造器函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">socket</span><span class="params">(_socket.socket)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, family=AF_INET, type=SOCK_STREAM, proto=<span class="number">0</span>, fileno=None)</span>:</span></span><br><span class="line">        _socket.socket.__init__(self, family, type, proto, fileno)</span><br><span class="line">        self._io_refs = <span class="number">0</span></span><br><span class="line">        self._closed = <span class="keyword">False</span></span><br></pre></td></tr></table></figure></p>
 <p><code>family</code>指定协议族, <code>type</code>指定协议类型, <code>proto</code>指定协议编号(默认为0),<code>fileno</code>指定文件描述符。</p>
